@@ -20,25 +20,27 @@ public class Exercise001 {
     	
     	int sum = 0;
     	int currVal = 0;
-    	//int tracker = 0;
-    	List<Integer> intList = new ArrayList<Integer>(arr.length);
+    	int occurence = 0;
+    	
+    	// Convert the input array to an arrayList
+     	List<Integer> intList = new ArrayList<Integer>(arr.length);
     	for (int i : arr)
     	{
     	    intList.add(i);
     	}        
-        //System.out.println(list);
-    	int occurence = 0;
-    	ListIterator<Integer> listIterator = intList.listIterator();
-   	 
+
+    	//Create an iterator to iterate through the arrayList
+     	ListIterator<Integer> listIterator = intList.listIterator();
+   	
+    	//Iterate through the arrayList to find the occurence of each number
     	while(listIterator.hasNext()) {
     		currVal = listIterator.next();
     		occurence = Collections.frequency(intList, currVal);
+    		// Add all the numbers that has single occurence
     		if (occurence == 1) 
     				sum = sum + currVal;
-    	   // System.out.println(listIterator.next());
     	}
-    	System.out.println(sum);		
-    	
+    	//returns the sum of the numbers that occur only once
         return sum;
     }
 }
