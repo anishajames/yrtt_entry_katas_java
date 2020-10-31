@@ -7,6 +7,16 @@ public class Exercise002 {
 
     public int past(int h, int m, int s) {
         // Your code here!
-        return 0;
+    	
+    	//Convert hours to milliseconds
+    	int hoursinMillis = h * 60 * 60 * 1000;
+    	//Convert minutes to milliseconds
+    	int minsinMillis = m * 60 * 1000;
+    	//Convert seconds to milliseconds
+    	int secsinMillis = s * 1000;
+    	
+    	// Add up the time in milliseconds
+    	int timeinmillis = hoursinMillis + minsinMillis + secsinMillis ;
+    	return timeinmillis ;
     }
 }
