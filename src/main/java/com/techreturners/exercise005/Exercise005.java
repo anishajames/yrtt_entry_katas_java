@@ -1,5 +1,8 @@
 package com.techreturners.exercise005;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Exercise005 {
 
     // Introduction
@@ -27,6 +30,41 @@ public class Exercise005 {
 
     public String[] mexicanWave(String str) {
         // Your code here!
-        return new String[] {};
+    	int length = str.length();
+//    	int whiteSpace = countWhiteSpace(str);
+ //   	length = length - whiteSpace;
+    	// Using Arraylist to be able to remove unwanted elements
+    	ArrayList<String> temp = new ArrayList<String>();
+    	String [] returnArray = null;
+    	char[] arr = new char [length];
+    	char[] arrModified = new char [length];
+    	String newCreated = null;
+        for (int i=0; i<length; i++) 
+        {
+        	for (int j= 0; j<length; j++) {
+        		arr[j] = str.charAt(j);
+        		arrModified[j] = arr[j]; 
+        		if (i==j)
+        			arrModified[j] = Character.toUpperCase(arr[j]);
+        	}
+        	newCreated = new String (arrModified);
+       		temp.add(newCreated);
+        }
+        	// This is to remove all instances where the original string 
+           //   is there in the array list due to whitespace, 
+        	// this code should handle multiple whitespace
+        	temp.removeAll(Collections.singleton(str));
+        	// Convert array list to array to return
+        	returnArray = temp.toArray(new String[temp.size()]);
+			/*
+			 * if (returnArray.length > 0) for (int i=0; i<returnArray.length; i++) {
+			 * System.out.println(returnArray[i]); }
+			 */        
+        	return returnArray; 
     }
-}
+	/*
+	 * public int countWhiteSpace(String testCode){ int counter = 0; if(testCode !=
+	 * null){ for(int i = 0; i < testCode.length(); i++){
+	 * if(Character.isWhitespace(testCode.charAt(i))){ counter ++; } } } return
+	 * counter; }
+	 */}
