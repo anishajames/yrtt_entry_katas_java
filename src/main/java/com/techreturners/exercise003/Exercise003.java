@@ -1,5 +1,9 @@
 package com.techreturners.exercise003;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+
 public class Exercise003 {
 
     // Scenario
@@ -28,7 +32,33 @@ public class Exercise003 {
 
     public static int[] rowWeights(final int[] weights) {
         // Your code here!
-        return new int[]{0, 0};
-    }
+    	
+    	int loopNum = 0;
+    	int team1 = 0;
+    	int team2 = 0;
+    	int currVal = 0;
+    	
+    	// Convert the input array to an arrayList
+     	List<Integer> intList = new ArrayList<Integer>(weights.length);
+    	for (int i : weights)
+    	{
+    	    intList.add(i);
+    	}        
 
+    	//Create an iterator to iterate through the arrayList
+     	ListIterator<Integer> listIterator = intList.listIterator();
+   	
+    	//Iterate through the arrayList to sum up the alternate numbers into each team
+    	while(listIterator.hasNext()) {
+    		currVal = listIterator.next();
+    		if(loopNum % 2 == 0)
+    			team1 = team1 + currVal;
+    		else
+    			team2 = team2 + currVal;
+    		loopNum++;
+    	}	
+    	//System.out.println(team1 + "," + team2);
+        return new int[]{team1, team2};
+    
+    }
 }
